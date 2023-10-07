@@ -8,16 +8,32 @@
 import SwiftUI
 let emojis = ["🗿","🍎","🔥"]
 struct SubjectFormView: View {
-    @State var subjectName:String
-    @State var emoji:String
+    @State var subjectName: String = ""
+    @State var emoji: String = ""
     var body: some View {
-        Form{
-            HStack {
+        NavigationStack {
+            Form {
                 TextField("Subject Name", text: $subjectName)
-                    
+                
                 Picker("Emoji", selection: $emoji) {
                     ForEach(emojis,id: \.self) { emoji in
                         Text(emoji)
+                    }
+                }
+                
+            }
+            .navigationTitle("Add New Subject")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button{} label: {
+                        Text("Cancel")
+                            .foregroundStyle(.red)
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button{} label: {
+                        Text("Save")
+                            .foregroundStyle(.blue)
                     }
                 }
             }
@@ -26,5 +42,5 @@ struct SubjectFormView: View {
 }
 
 #Preview{
-    SubjectFormView(subjectName: "rrr",emoji: "🗿")
+    SubjectFormView()
 }

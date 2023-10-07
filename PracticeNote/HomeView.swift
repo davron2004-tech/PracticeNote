@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State var isAddSubjectViewShowing = false
     var body: some View {
         NavigationStack {
             List {
@@ -25,10 +26,15 @@ struct HomeView: View {
             .navigationTitle("Subjects")
             .toolbar {
                 Button {
-                    
+                    isAddSubjectViewShowing = true
                 } label: {
                     Image(systemName: "plus")
                 }
+            }
+            .sheet(isPresented: $isAddSubjectViewShowing) {
+                SubjectFormView()
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
             }
         }
     }

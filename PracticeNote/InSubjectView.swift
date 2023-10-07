@@ -11,7 +11,7 @@ struct InSubjectView: View {
     var subject: SubjectDataModel
     @State var isAddingFolder = false
     @State var isAddingLesson = false
-    @State var folderName = ""
+    @Binding var isShowingInSubjectView:Bool
     @State var lessonName = ""
     var body: some View {
         NavigationStack {
@@ -29,33 +29,44 @@ struct InSubjectView: View {
                     }
                 }
                 .buttonStyle(.borderedProminent)
-                if let folders = subject.folders {
+                if (!subject.folders.isEmpty) {
                     Section("Folders") {
-                        ForEach(folders, id: \.self) { folder in
-                            Text(folder)
+                        ForEach(subject.folders) { folder in
+                            Text(folder.folderName)
                         }
                     }
                 }
-                if let lessons = subject.lessons {
+                if (!subject.lessons.isEmpty) {
                     Section("Lessons") {
-                        ForEach(lessons, id: \.self) { lesson in
-                            Text(lesson)
+                        ForEach(subject.lessons) { lesson in
+                            Text(lesson.lessonName)
                         }
                     }
                 }
             }
             .navigationTitle("Add Folder")
-            .sheet(isPresented: $isAddingFolder, content: {
-                Form(content: {
-                    TextField("Folder name", text: $folderName)
-                        .presentationDetents([.medium])
-                        .presentationDragIndicator(.visible)
-                })
-            })
+            .toolbar{
+                ToolbarItem(placement: .topBarLeading) {
+                    Button{
+                        isShowingInSubjectView = false
+                    } label: {
+                        Text("Back")
+                            .foregroundStyle(.blue)
+                            .underline()
+                    }
+                }
+            }
+            .sheet(isPresented: $isAddingFolder) {
+                FolderFormView(isShowingFolderForm: $isAddingFolder,subject:subject)
+            }
+            .sheet(isPresented: $isAddingLesson){
+                LessonFormView(isShowingLessonForm: $isAddingLesson,subject:subject)
+            }
         }
+        
     }
 }
 
 #Preview {
-    InSubjectView(subject: SubjectDataModel(subjectName: "KOrean", emoji: "🗿"))
+    InSubjectView(subject: SubjectDataModel(subjectName: "KOrean", emoji: "🗿"), isShowingInSubjectView: .constant(true))
 }

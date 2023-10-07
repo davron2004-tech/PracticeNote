@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
-
 struct AccountView: View {
     @State var isSheetShowingVocab = false
+    var subjects:[SubjectDataModel]
+    @State var lessonCount = 0
     var body: some View {
         NavigationStack {
             List {
@@ -16,12 +17,12 @@ struct AccountView: View {
                     HStack {
                         Text("Subjects:").bold()
                         Spacer()
-                        Text("1")
+                        Text("\(subjects.count)")
                     }
                     HStack {
                         Text("Lessons:").bold()
                         Spacer()
-                        Text("12")
+                        Text("\(lessonCount)")
                     }
                     HStack {
                         Text("Subjects:").bold()
@@ -99,9 +100,12 @@ struct AccountView: View {
             .presentationDetents([.fraction(0.3)])
             .presentationDragIndicator(.visible)
         }
+        .onAppear{
+            lessonCount = 0
+            for subject in subjects {
+                
+                lessonCount += subject.lessons.count
+            }
+        }
     }
-}
-
-#Preview {
-    AccountView()
 }

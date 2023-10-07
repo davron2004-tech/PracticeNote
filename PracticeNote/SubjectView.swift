@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SubjectView: View {
     var subject: SubjectDataModel
+    @State var isShowingInSubjectView = false
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -19,21 +20,25 @@ struct SubjectView: View {
             .font(.title2)
             .padding(.vertical, 12)
             HStack {
-                NavigationLink {
-                    InSubjectView(subject: subject)
+                Button {
+                    isShowingInSubjectView = true
                 } label: {
-                    Text("12 lessons")
+                    Text("\(subject.lessons.count) lessons")
                         .bold()
                 }
                 .buttonStyle(.borderedProminent)
-                NavigationLink {
-                    InSubjectView(subject: subject)
+                Button {
+                    isShowingInSubjectView = true
+                    
                 } label: {
-                    Text("120 words")
+                    Text("\(subject.words.count) words")
                         .bold()
                 }
                 .buttonStyle(.borderedProminent)
             }
+        }
+        .fullScreenCover(isPresented: $isShowingInSubjectView){
+            InSubjectView(subject: subject,isShowingInSubjectView: $isShowingInSubjectView)
         }
         .padding()
         .padding(.horizontal, 24)

@@ -16,12 +16,10 @@ class SubjectDataModel:Identifiable{
     var emoji:String
     var words:[String] = []
     var lessons:[LessonDataModel] = []
+    var folders:[FolderDataModel] = []
     init(subjectName: String, emoji: String) {
         self.subjectName = subjectName
         self.emoji = emoji
-        self.folders = folders
-        self.words = words
-        self.lessons = lessons
     }
 }
 
@@ -31,7 +29,6 @@ class FolderDataModel:Identifiable{
     var folderName:String
     var lessons:[LessonDataModel] = []
     init(folderName: String) {
-        
         self.folderName = folderName
     }
 }
@@ -42,9 +39,7 @@ class LessonDataModel: Identifiable {
     var lessonName:String
     var notes:[NoteDataModel] = []
     init(lessonName: String) {
-        
         self.lessonName = lessonName
-        
     }
 }
 @Model
@@ -54,7 +49,6 @@ class NoteDataModel:Identifiable{
     var imageData:Data
     var cards:[CardDataModel] = []
     init(text: String, imageData: Data) {
-        
         self.text = text
         self.imageData = imageData
     }
@@ -65,7 +59,6 @@ class CardDataModel:Identifiable{
     var face:String
     var back:String
     init(face: String, back: String) {
-        
         self.face = face
         self.back = back
     }

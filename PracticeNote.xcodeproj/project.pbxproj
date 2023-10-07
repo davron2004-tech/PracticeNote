@@ -14,6 +14,7 @@
 		10E89FD92AD078E7008417D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */; };
 		10E89FE02AD07AAD008417D8 /* SubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E89FDF2AD07AAD008417D8 /* SubjectView.swift */; };
 		10E89FE42AD07D23008417D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E89FE32AD07D23008417D8 /* HomeView.swift */; };
+		DD8E36A82AD170CA005EA93B /* SubjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		10E89FDF2AD07AAD008417D8 /* SubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectView.swift; sourceTree = "<group>"; };
 		10E89FE32AD07D23008417D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFormView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				10E89FDF2AD07AAD008417D8 /* SubjectView.swift */,
 				10E89FD52AD078E7008417D8 /* Assets.xcassets */,
 				10E89FD72AD078E7008417D8 /* Preview Content */,
+				DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */,
 			);
 			path = PracticeNote;
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 				10E89FE42AD07D23008417D8 /* HomeView.swift in Sources */,
 				10E89FE02AD07AAD008417D8 /* SubjectView.swift in Sources */,
 				10E89FD22AD078E6008417D8 /* PracticeNoteApp.swift in Sources */,
+				DD8E36A82AD170CA005EA93B /* SubjectFormView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

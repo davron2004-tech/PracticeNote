@@ -6,19 +6,15 @@
 //
 
 import SwiftUI
-
+import SwiftData
 struct HomeView: View {
+    @Query var subjects:[SubjectDataModel]
     @State var isAddSubjectViewShowing = false
     var body: some View {
         NavigationStack {
-            List {
+            List(subjects) {subject in
                 VStack(spacing: 24) {
-                    SubjectView()
-                    SubjectView()
-                    SubjectView()
-                    SubjectView()
-                    SubjectView()
-                    SubjectView()
+                    SubjectView(emoji: subject.emoji, subjectName: subject.subjectName)
                 }
                 .listRowSeparator(.hidden)
             }
@@ -32,7 +28,7 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $isAddSubjectViewShowing) {
-                SubjectFormView()
+                SubjectFormView(isShoiwngSubjectFormView: $isAddSubjectViewShowing)
                     .presentationDetents([.medium])
                     .presentationDragIndicator(.visible)
             }

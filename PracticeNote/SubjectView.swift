@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct SubjectView: View {
+    var emoji:String
+    var subjectName:String
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("🗿")
-                Text("Korean")
+                Text(emoji)
+                Text(subjectName)
                     .bold()
             }
             .font(.title2)
@@ -43,6 +45,4 @@ struct SubjectView: View {
     }
 }
 
-#Preview {
-    SubjectView()
-}
+

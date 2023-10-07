@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 let emojis = ["🗿","🍎","🔥"]
+
 struct SubjectFormView: View {
+    @Environment(\.modelContext) var context
+    @Binding var isShoiwngSubjectFormView:Bool
     @State var subjectName: String = ""
     @State var emoji: String = ""
     var body: some View {
@@ -25,13 +29,18 @@ struct SubjectFormView: View {
             .navigationTitle("Add New Subject")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button{} label: {
+                    Button{
+                        isShoiwngSubjectFormView = false
+                    } label: {
                         Text("Cancel")
                             .foregroundStyle(.red)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button{} label: {
+                    Button{
+                        context.insert(SubjectDataModel(subjectName: subjectName, emoji: emoji))
+                        isShoiwngSubjectFormView = false
+                    } label: {
                         Text("Save")
                             .foregroundStyle(.blue)
                     }
@@ -42,5 +51,5 @@ struct SubjectFormView: View {
 }
 
 #Preview{
-    SubjectFormView()
+    SubjectFormView(isShoiwngSubjectFormView: .constant(true))
 }

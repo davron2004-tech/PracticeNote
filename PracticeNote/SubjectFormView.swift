@@ -13,7 +13,7 @@ struct SubjectFormView: View {
     @Environment(\.modelContext) var context
     @Binding var isShoiwngSubjectFormView:Bool
     @State var subjectName: String = ""
-    @State var emoji: String = ""
+    @State var emoji: String = "🗿"
     var body: some View {
         NavigationStack {
             Form {

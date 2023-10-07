@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 struct HomeView: View {
+    @Environment(\.modelContext) var context
     @Query var subjects:[SubjectDataModel]
     @State var isAddSubjectViewShowing = false
     var body: some View {

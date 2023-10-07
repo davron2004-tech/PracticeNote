@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct SubjectView: View {
-    var emoji:String
-    var subjectName:String
+    var subject: SubjectDataModel
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(emoji)
-                Text(subjectName)
+                Text(subject.emoji)
+                Text(subject.subjectName)
                     .bold()
             }
             .font(.title2)
             .padding(.vertical, 12)
             HStack {
-                Button {
-                    
+                NavigationLink {
+                    InSubjectView(subject: subject)
                 } label: {
                     Text("12 lessons")
                         .bold()
                 }
                 .buttonStyle(.borderedProminent)
-                Button {
-                    
+                NavigationLink {
+                    InSubjectView(subject: subject)
                 } label: {
                     Text("120 words")
                         .bold()

@@ -19,7 +19,9 @@ class SubjectDataModel:Identifiable{
     init(subjectName: String, emoji: String) {
         self.subjectName = subjectName
         self.emoji = emoji
-       
+        self.folders = folders
+        self.words = words
+        self.lessons = lessons
     }
 }
 

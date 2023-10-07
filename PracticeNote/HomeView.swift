@@ -15,9 +15,10 @@ struct HomeView: View {
         NavigationStack {
             List(subjects) {subject in
                 VStack(spacing: 24) {
-                    SubjectView(emoji: subject.emoji, subjectName: subject.subjectName)
+                    SubjectView(subject: subject)
                 }
                 .listRowSeparator(.hidden)
+                
             }
             .scrollContentBackground(.hidden)
             .navigationTitle("Subjects")

@@ -19,6 +19,7 @@
 		DD5531EF2AD1A07B004C1495 /* LessonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */; };
 		DD8E36A82AD170CA005EA93B /* SubjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */; };
 		DD8E36AA2AD180C0005EA93B /* SubjectDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E36A92AD180C0005EA93B /* SubjectDataModel.swift */; };
+		DDD1C2002AD28004000C26D7 /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonFormView.swift; sourceTree = "<group>"; };
 		DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFormView.swift; sourceTree = "<group>"; };
 		DD8E36A92AD180C0005EA93B /* SubjectDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDataModel.swift; sourceTree = "<group>"; };
+		DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */,
 				DD5531EC2AD19F3F004C1495 /* FolderFormView.swift */,
 				DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */,
+				DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */,
 			);
 			path = PracticeNote;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				104722BA2AD1897900E681C2 /* InSubjectView.swift in Sources */,
 				DD5531ED2AD19F3F004C1495 /* FolderFormView.swift in Sources */,
+				DDD1C2002AD28004000C26D7 /* LessonsView.swift in Sources */,
 				10C9CB9E2AD0816A00895DBE /* AccountView.swift in Sources */,
 				10E89FD42AD078E6008417D8 /* ContentView.swift in Sources */,
 				DD5531EF2AD1A07B004C1495 /* LessonFormView.swift in Sources */,

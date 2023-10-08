@@ -105,7 +105,13 @@ struct AccountView: View {
             for subject in subjects {
                 
                 lessonCount += subject.lessons.count
+                
+                for folder in subject.folders {
+                    lessonCount += folder.lessons.count
+                }
+                
             }
+            
         }
     }
 }

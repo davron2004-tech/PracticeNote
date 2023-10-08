@@ -32,8 +32,14 @@ struct InSubjectView: View {
                 if (!subject.folders.isEmpty) {
                     Section("Folders") {
                         ForEach(subject.folders) { folder in
-                            Text(folder.folderName)
+                            NavigationLink{
+                                LessonsView(folder: folder)
+                            } label: {
+                                Text(folder.folderName)
+                            }
+                            
                         }
+                        
                     }
                 }
                 if (!subject.lessons.isEmpty) {
@@ -44,13 +50,13 @@ struct InSubjectView: View {
                     }
                 }
             }
-            .navigationTitle("Add Folder")
+            .navigationTitle("\(subject.subjectName)")
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button{
                         isShowingInSubjectView = false
                     } label: {
-                        Text("Back")
+                        Text("Subjects")
                             .foregroundStyle(.blue)
                             .underline()
                     }
@@ -58,9 +64,11 @@ struct InSubjectView: View {
             }
             .sheet(isPresented: $isAddingFolder) {
                 FolderFormView(isShowingFolderForm: $isAddingFolder,subject:subject)
+                    .presentationDetents([.medium])
             }
             .sheet(isPresented: $isAddingLesson){
-                LessonFormView(isShowingLessonForm: $isAddingLesson,subject:subject)
+                LessonFormView(isShowingLessonForm: $isAddingLesson,subject: subject)
+                    .presentationDetents([.medium])
             }
         }
         

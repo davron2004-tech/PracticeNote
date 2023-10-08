@@ -10,7 +10,8 @@ import SwiftUI
 struct LessonFormView: View {
     @State var lessonName = ""
     @Binding var isShowingLessonForm:Bool
-    var subject:SubjectDataModel
+    var folder:FolderDataModel?
+    var subject:SubjectDataModel?
     var body: some View {
         NavigationView{
             Form{
@@ -29,7 +30,13 @@ struct LessonFormView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
-                        subject.lessons.append(LessonDataModel(lessonName: lessonName))
+                        if let realFolder = folder{
+                            realFolder.lessons.append(LessonDataModel(lessonName: lessonName))
+                        }
+                        if let realSubject = subject{
+                            realSubject.lessons.append(LessonDataModel(lessonName: lessonName))
+                        }
+                        
                         isShowingLessonForm = false
                     } label: {
                         Text("Save")

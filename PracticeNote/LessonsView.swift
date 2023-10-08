@@ -8,11 +8,36 @@
 import SwiftUI
 
 struct LessonsView: View {
+    var folder: FolderDataModel
+    @State var isAddingLesson = false
+    @State var lessonName = ""
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            List {
+                HStack(alignment: .center) {
+                    Button {
+                        isAddingLesson = true
+                    } label: {
+                        Text("Add Lesson")
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                if (!folder.lessons.isEmpty) {
+                    Section("Lessons") {
+                        ForEach(folder.lessons) { lesson in
+                            Text(lesson.lessonName)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("\(folder.folderName)")
+            .sheet(isPresented: $isAddingLesson){
+                LessonFormView(isShowingLessonForm: $isAddingLesson,folder: folder)
+                    .presentationDetents([.medium])
+            }
+        }
+        
     }
 }
 
-#Preview {
-    LessonsView()
-}
+

@@ -6,13 +6,30 @@
 //
 
 import SwiftUI
-
 struct CardsView: View {
+    
+    
+    @Bindable var lesson:LessonDataModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            ScrollView(.horizontal) {
+                HStack{
+                    ForEach(lesson.cards,id:\.self){card in
+                        CardView(card:card)
+                    }
+                }
+                .frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
+            }
+            VStack{
+                NavigationLink{
+                    TranslatorView(lesson: lesson)
+                } label: {
+                    Text("Create New Card")
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        }
     }
 }
 
-#Preview {
-    CardsView()
-}

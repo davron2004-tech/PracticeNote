@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ImagesView: View {
+    @Bindable var lesson:LessonDataModel
     var body: some View {
         NavigationStack {
             Text("No Images yet!")
@@ -22,6 +23,4 @@ struct ImagesView: View {
     }
 }
 
-#Preview {
-    ImagesView()
-}
+

@@ -10,6 +10,7 @@ import SwiftUI
 struct SubjectView: View {
     var subject: SubjectDataModel
     @State var isShowingInSubjectView = false
+    @State var wordCount = 0
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -31,7 +32,7 @@ struct SubjectView: View {
                     isShowingInSubjectView = true
                     
                 } label: {
-                    Text("\(subject.words.count) words")
+                    Text("\(wordCount) words")
                         .bold()
                 }
                 .buttonStyle(.borderedProminent)
@@ -42,9 +43,20 @@ struct SubjectView: View {
         }
         .padding()
         .padding(.horizontal, 24)
-        .background(Color(.white))
+        .background(Color(.label))
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .shadow(radius: 2, x: 0, y: 2)
+        .onAppear{
+            wordCount = 0
+            for lesson in subject.lessons {
+                wordCount += lesson.cards.count
+            }
+            for folder in subject.folders {
+                for lesson in folder.lessons {
+                    wordCount += lesson.cards.count
+                }
+            }
+        }
         
     }
 }

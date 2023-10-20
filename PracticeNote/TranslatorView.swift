@@ -8,6 +8,7 @@
 import SwiftUI
 let languages = ["English","Russian","Uzbek","Korean"]
 struct TranslatorView: View {
+    @Environment(\.presentationMode) var presentation
     @Bindable var lesson:LessonDataModel
     
     @State var frontText = ""
@@ -22,15 +23,17 @@ struct TranslatorView: View {
                 Color(.gray)
                     .ignoresSafeArea()
                 VStack{
-                    TranslatorView(text: $frontText, language: $frontLanguage)
+                    TranslatorSideView(text: $frontText, language: $frontLanguage)
                         .padding(.bottom)
-                    TranslatorView(text: $backText, language: $backLanguage)
+                    TranslatorSideView(text: $backText, language: $backLanguage)
                         .padding(.bottom)
                     Button {
                         let card = CardDataModel(face: frontText, back: backText)
                         lesson.cards.append(card)
+                        presentation.wrappedValue.dismiss()
                     } label: {
                         Text("Save the card")
+                        
                     }
                     .buttonStyle(.borderedProminent)
 
@@ -83,13 +86,28 @@ struct TranslatorView: View {
         
     }
 }
-struct TranslatorView:View {
+struct TranslatorSideView:View {
     @Binding var text:String
     @Binding var language:String
+    @State var isShowingPopup = false
     var body: some View {
         VStack{
             HStack{
+                Button {
+//                    if (language == "Uzbek"){
+//                        isShowingPopup = true
+//                    }
+                    
+                        let textToSpeech = TextToSpeech(text: text)
+                        textToSpeech.speak()
+                    
+                    
+                } label: {
+                    Image(systemName: "speaker.wave.2")
+                }
+
                 TextEditor(text: $text)
+                    .foregroundStyle(.black)
                 VStack {
                     Picker("Language", selection: $language) {
                         ForEach(languages,id: \.self){languageText in
@@ -99,6 +117,11 @@ struct TranslatorView:View {
                     Spacer()
                 }
             }
+        }
+        .popover(isPresented: $isShowingPopup){
+            Text("Speech is only available in English and Russian!")
+                .foregroundStyle(.secondary)
+                .padding()
         }
         .background(Color(.white))
         .clipShape(RoundedRectangle(cornerRadius: 16))

@@ -13,28 +13,36 @@ struct LessonsView: View {
     @State var lessonName = ""
     var body: some View {
         NavigationStack {
-            List {
+            VStack{
                 HStack(alignment: .center) {
                     Button {
                         isAddingLesson = true
                     } label: {
                         Text("Add Lesson")
                     }
+                    
                 }
                 .buttonStyle(.borderedProminent)
                 if (!folder.lessons.isEmpty) {
-                    Section("Lessons") {
-                        ForEach(folder.lessons) { lesson in
-                            Text(lesson.lessonName)
+                    List{
+                        Section("Lessons") {
+                            ForEach(folder.lessons) { lesson in
+                                NavigationLink{
+                                    LessonView(lesson: lesson)
+                                }label: {
+                                    Text(lesson.lessonName)
+                                }
+                            }
                         }
                     }
                 }
+                Spacer()
             }
-            .navigationTitle("\(folder.folderName)")
-            .sheet(isPresented: $isAddingLesson){
-                LessonFormView(isShowingLessonForm: $isAddingLesson,folder: folder)
-                    .presentationDetents([.medium])
-            }
+        }
+        .navigationTitle("\(folder.folderName)")
+        .sheet(isPresented: $isAddingLesson){
+            LessonFormView(isShowingLessonForm: $isAddingLesson,folder: folder)
+                .presentationDetents([.medium])
         }
         
     }

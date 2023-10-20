@@ -10,6 +10,7 @@ struct AccountView: View {
     @State var isSheetShowingVocab = false
     var subjects:[SubjectDataModel]
     @State var lessonCount = 0
+    @State var wordCount = 0
     var body: some View {
         NavigationStack {
             List {
@@ -25,52 +26,52 @@ struct AccountView: View {
                         Text("\(lessonCount)")
                     }
                     HStack {
-                        Text("Subjects:").bold()
+                        Text("Words:").bold()
                         Spacer()
-                        Text("120")
+                        Text("\(wordCount)")
                     }
                 } header: {
                     Text("Stats")
                 }
-                Section {
-                    Button {
-                        isSheetShowingVocab = true
-                    } label: {
-                        Text("아이")
-                            .bold()
-                            .foregroundStyle(.red)
-                    }
-                    Button {
-                        isSheetShowingVocab = true
-                    } label: {
-                        Text("아이")
-                            .bold()
-                            .foregroundStyle(.green)
-                    }
-                    Button {
-                        isSheetShowingVocab = true
-                    } label: {
-                        Text("아이")
-                            .bold()
-                            .foregroundStyle(.red)
-                    }
-                    Button {
-                        isSheetShowingVocab = true
-                    } label: {
-                        Text("아이")
-                            .bold()
-                            .foregroundStyle(.green)
-                    }
-                    Button {
-                        isSheetShowingVocab = true
-                    } label: {
-                        Text("아이")
-                            .bold()
-                            .foregroundStyle(.red)
-                    }
-                } header: {
-                    Text("Practice History")
-                }
+//                Section {
+//                    Button {
+//                        isSheetShowingVocab = true
+//                    } label: {
+//                        Text("아이")
+//                            .bold()
+//                            .foregroundStyle(.red)
+//                    }
+//                    Button {
+//                        isSheetShowingVocab = true
+//                    } label: {
+//                        Text("아이")
+//                            .bold()
+//                            .foregroundStyle(.green)
+//                    }
+//                    Button {
+//                        isSheetShowingVocab = true
+//                    } label: {
+//                        Text("아이")
+//                            .bold()
+//                            .foregroundStyle(.red)
+//                    }
+//                    Button {
+//                        isSheetShowingVocab = true
+//                    } label: {
+//                        Text("아이")
+//                            .bold()
+//                            .foregroundStyle(.green)
+//                    }
+//                    Button {
+//                        isSheetShowingVocab = true
+//                    } label: {
+//                        Text("아이")
+//                            .bold()
+//                            .foregroundStyle(.red)
+//                    }
+//                } header: {
+//                    Text("Practice History")
+//                }
                 
             }
             .navigationTitle("Davron")
@@ -102,14 +103,20 @@ struct AccountView: View {
         }
         .onAppear{
             lessonCount = 0
+            wordCount = 0
             for subject in subjects {
                 
                 lessonCount += subject.lessons.count
                 
                 for folder in subject.folders {
                     lessonCount += folder.lessons.count
+                    for lesson in folder.lessons {
+                        wordCount += lesson.cards.count
+                    }
                 }
-                
+                for lesson in subject.lessons {
+                    wordCount += lesson.cards.count
+                }
             }
             
         }

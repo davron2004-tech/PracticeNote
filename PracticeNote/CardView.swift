@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct CardView: View {
-    var text:String
+    @State var isBack = false
+    var card:CardDataModel
     var body: some View {
-        Text(text)
-            .foregroundStyle(Color(.label))
-            .frame(width: 300,height: 200)
-            .background(Color(.purple))
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+        Button {
+            isBack.toggle()
+        } label: {
+            
+            Text(isBack ? card.back : card.face)
+                .foregroundStyle(Color(.label))
+                .frame(width: 300,height: 200)
+                .background(Color(.purple))
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+        }
+        
             
     }
 }
 
-#Preview {
-    CardView(text: "Hello")
-}
+

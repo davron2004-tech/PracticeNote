@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct LessonView: View {
+    @Bindable var lesson:LessonDataModel
     var body: some View {
         NavigationStack {
             TabView {
-                NoteView()
+                NoteView(lesson: lesson)
                     .tabItem { Label("Note", systemImage: "pencil.line") }
-                ImagesView()
+                ImagesView(lesson: lesson)
                     .tabItem { Label("Images", systemImage: "photo.stack") }
-                VacabulariesView()
+                CardsView(lesson:lesson)
                     .tabItem { Label("Vocabs", systemImage: "list.clipboard.fill") }
             }
             .navigationTitle("Lesson Name")
@@ -23,6 +24,4 @@ struct LessonView: View {
     }
 }
 
-#Preview {
-    LessonView()
-}
+

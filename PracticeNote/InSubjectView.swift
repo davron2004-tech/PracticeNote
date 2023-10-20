@@ -45,7 +45,11 @@ struct InSubjectView: View {
                 if (!subject.lessons.isEmpty) {
                     Section("Lessons") {
                         ForEach(subject.lessons) { lesson in
-                            Text(lesson.lessonName)
+                            NavigationLink{
+                                LessonView(lesson: lesson)
+                            }label: {
+                                Text(lesson.lessonName)
+                            }
                         }
                     }
                 }

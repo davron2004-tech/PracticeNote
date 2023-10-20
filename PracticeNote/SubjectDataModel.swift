@@ -37,22 +37,13 @@ class FolderDataModel:Identifiable{
 class LessonDataModel: Identifiable {
     var id = UUID()
     var lessonName:String
-    var notes:[NoteDataModel] = []
+    var text:String?
+    var cards:[CardDataModel] = []
     init(lessonName: String) {
         self.lessonName = lessonName
     }
 }
-@Model
-class NoteDataModel:Identifiable{
-    var id = UUID()
-    var text:String
-    var imageData:Data
-    var cards:[CardDataModel] = []
-    init(text: String, imageData: Data) {
-        self.text = text
-        self.imageData = imageData
-    }
-}
+
 @Model
 class CardDataModel:Identifiable{
     var id = UUID()

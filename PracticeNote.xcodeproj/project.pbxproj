@@ -66,6 +66,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		106925692AE2F02500499D22 /* FormsView */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */,
+				DD5531EC2AD19F3F004C1495 /* FolderFormView.swift */,
+				DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */,
+			);
+			path = FormsView;
+			sourceTree = "<group>";
+		};
+		1069256A2AE2F02F00499D22 /* SubjectsView */ = {
+			isa = PBXGroup;
+			children = (
+				10E89FDF2AD07AAD008417D8 /* SubjectView.swift */,
+				104722B92AD1897900E681C2 /* InSubjectView.swift */,
+			);
+			path = SubjectsView;
+			sourceTree = "<group>";
+		};
+		1069256B2AE2F03900499D22 /* LessonView */ = {
+			isa = PBXGroup;
+			children = (
+				DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */,
+				10C71CA12AD2ACFF009DD91D /* LessonView.swift */,
+			);
+			path = LessonView;
+			sourceTree = "<group>";
+		};
+		1069256C2AE2F04C00499D22 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				DD8E36A92AD180C0005EA93B /* SubjectDataModel.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		1069256D2AE2F05900499D22 /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				DDED548F2AD902C100073615 /* CardView.swift */,
+				DDED54912AD904CB00073615 /* CardsView.swift */,
+			);
+			path = CardView;
+			sourceTree = "<group>";
+		};
+		1069256E2AE2F06500499D22 /* ImageView */ = {
+			isa = PBXGroup;
+			children = (
+				10C71CA32AD2AEAF009DD91D /* ImagesView.swift */,
+			);
+			path = ImageView;
+			sourceTree = "<group>";
+		};
 		10E89FC52AD078E5008417D8 = {
 			isa = PBXGroup;
 			children = (
@@ -86,26 +139,21 @@
 			isa = PBXGroup;
 			children = (
 				10E89FD12AD078E6008417D8 /* PracticeNoteApp.swift */,
-				DD8E36A92AD180C0005EA93B /* SubjectDataModel.swift */,
 				10E89FD32AD078E6008417D8 /* ContentView.swift */,
 				10E89FE32AD07D23008417D8 /* HomeView.swift */,
-				10E89FDF2AD07AAD008417D8 /* SubjectView.swift */,
-				104722B92AD1897900E681C2 /* InSubjectView.swift */,
 				10C9CB9D2AD0816A00895DBE /* AccountView.swift */,
-				10E89FD52AD078E7008417D8 /* Assets.xcassets */,
-				10E89FD72AD078E7008417D8 /* Preview Content */,
-				DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */,
-				DD5531EC2AD19F3F004C1495 /* FolderFormView.swift */,
-				DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */,
-				DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */,
-				10C71CA12AD2ACFF009DD91D /* LessonView.swift */,
+				1069256A2AE2F02F00499D22 /* SubjectsView */,
+				1069256B2AE2F03900499D22 /* LessonView */,
+				106925692AE2F02500499D22 /* FormsView */,
+				1069256E2AE2F06500499D22 /* ImageView */,
+				1069256D2AE2F05900499D22 /* CardView */,
+				1069256C2AE2F04C00499D22 /* DataModel */,
 				10C71CA72AD2AF93009DD91D /* NoteView.swift */,
-				10C71CA32AD2AEAF009DD91D /* ImagesView.swift */,
 				10C71CA52AD2AEBC009DD91D /* TranslatorView.swift */,
 				DDFAE6C12AD8564F00B5DC84 /* Translator.swift */,
-				DDED548F2AD902C100073615 /* CardView.swift */,
-				DDED54912AD904CB00073615 /* CardsView.swift */,
 				DD7123622ADC4A5D00156F00 /* TextToSpeech.swift */,
+				10E89FD52AD078E7008417D8 /* Assets.xcassets */,
+				10E89FD72AD078E7008417D8 /* Preview Content */,
 			);
 			path = PracticeNote;
 			sourceTree = "<group>";

@@ -16,20 +16,9 @@ class SubjectDataModel:Identifiable{
     var emoji:String
     var words:[String] = []
     var lessons:[LessonDataModel] = []
-    var folders:[FolderDataModel] = []
     init(subjectName: String, emoji: String) {
         self.subjectName = subjectName
         self.emoji = emoji
-    }
-}
-
-@Model
-class FolderDataModel:Identifiable{
-    var id = UUID()
-    var folderName:String
-    var lessons:[LessonDataModel] = []
-    init(folderName: String) {
-        self.folderName = folderName
     }
 }
 

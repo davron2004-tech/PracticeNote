@@ -14,6 +14,6 @@ struct PracticeNoteApp: App {
             ContentView()
                 
         }
-        .modelContainer(for: [SubjectDataModel.self,FolderDataModel.self,LessonDataModel.self,CardDataModel.self])
+        .modelContainer(for: [SubjectDataModel.self,LessonDataModel.self,CardDataModel.self])
     }
 }

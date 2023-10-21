@@ -17,14 +17,11 @@
 		10E89FD42AD078E6008417D8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E89FD32AD078E6008417D8 /* ContentView.swift */; };
 		10E89FD62AD078E7008417D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E89FD52AD078E7008417D8 /* Assets.xcassets */; };
 		10E89FD92AD078E7008417D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */; };
-		10E89FE02AD07AAD008417D8 /* SubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E89FDF2AD07AAD008417D8 /* SubjectView.swift */; };
 		10E89FE42AD07D23008417D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E89FE32AD07D23008417D8 /* HomeView.swift */; };
-		DD5531ED2AD19F3F004C1495 /* FolderFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5531EC2AD19F3F004C1495 /* FolderFormView.swift */; };
 		DD5531EF2AD1A07B004C1495 /* LessonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */; };
 		DD7123632ADC4A5D00156F00 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7123622ADC4A5D00156F00 /* TextToSpeech.swift */; };
 		DD8E36A82AD170CA005EA93B /* SubjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */; };
 		DD8E36AA2AD180C0005EA93B /* SubjectDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E36A92AD180C0005EA93B /* SubjectDataModel.swift */; };
-		DDD1C2002AD28004000C26D7 /* LessonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */; };
 		DDED54902AD902C100073615 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED548F2AD902C100073615 /* CardView.swift */; };
 		DDED54922AD904CB00073615 /* CardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDED54912AD904CB00073615 /* CardsView.swift */; };
 		DDFAE6C22AD8564F00B5DC84 /* Translator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFAE6C12AD8564F00B5DC84 /* Translator.swift */; };
@@ -42,14 +39,11 @@
 		10E89FD32AD078E6008417D8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		10E89FD52AD078E7008417D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		10E89FDF2AD07AAD008417D8 /* SubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectView.swift; sourceTree = "<group>"; };
 		10E89FE32AD07D23008417D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		DD5531EC2AD19F3F004C1495 /* FolderFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderFormView.swift; sourceTree = "<group>"; };
 		DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonFormView.swift; sourceTree = "<group>"; };
 		DD7123622ADC4A5D00156F00 /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
 		DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFormView.swift; sourceTree = "<group>"; };
 		DD8E36A92AD180C0005EA93B /* SubjectDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDataModel.swift; sourceTree = "<group>"; };
-		DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsView.swift; sourceTree = "<group>"; };
 		DDED548F2AD902C100073615 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		DDED54912AD904CB00073615 /* CardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsView.swift; sourceTree = "<group>"; };
 		DDFAE6C12AD8564F00B5DC84 /* Translator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translator.swift; sourceTree = "<group>"; };
@@ -70,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */,
-				DD5531EC2AD19F3F004C1495 /* FolderFormView.swift */,
 				DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */,
 			);
 			path = FormsView;
@@ -79,7 +72,6 @@
 		1069256A2AE2F02F00499D22 /* SubjectsView */ = {
 			isa = PBXGroup;
 			children = (
-				10E89FDF2AD07AAD008417D8 /* SubjectView.swift */,
 				104722B92AD1897900E681C2 /* InSubjectView.swift */,
 			);
 			path = SubjectsView;
@@ -88,7 +80,6 @@
 		1069256B2AE2F03900499D22 /* LessonView */ = {
 			isa = PBXGroup;
 			children = (
-				DDD1C1FF2AD28004000C26D7 /* LessonsView.swift */,
 				10C71CA12AD2ACFF009DD91D /* LessonView.swift */,
 			);
 			path = LessonView;
@@ -237,9 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				104722BA2AD1897900E681C2 /* InSubjectView.swift in Sources */,
-				DD5531ED2AD19F3F004C1495 /* FolderFormView.swift in Sources */,
 				DD7123632ADC4A5D00156F00 /* TextToSpeech.swift in Sources */,
-				DDD1C2002AD28004000C26D7 /* LessonsView.swift in Sources */,
 				10C71CA42AD2AEAF009DD91D /* ImagesView.swift in Sources */,
 				10C9CB9E2AD0816A00895DBE /* AccountView.swift in Sources */,
 				DDFAE6C22AD8564F00B5DC84 /* Translator.swift in Sources */,
@@ -247,7 +236,6 @@
 				10E89FD42AD078E6008417D8 /* ContentView.swift in Sources */,
 				DD5531EF2AD1A07B004C1495 /* LessonFormView.swift in Sources */,
 				10E89FE42AD07D23008417D8 /* HomeView.swift in Sources */,
-				10E89FE02AD07AAD008417D8 /* SubjectView.swift in Sources */,
 				10E89FD22AD078E6008417D8 /* PracticeNoteApp.swift in Sources */,
 				DDED54922AD904CB00073615 /* CardsView.swift in Sources */,
 				10C71CA62AD2AEBC009DD91D /* TranslatorView.swift in Sources */,

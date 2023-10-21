@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		104722BA2AD1897900E681C2 /* InSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104722B92AD1897900E681C2 /* InSubjectView.swift */; };
+		104722BA2AD1897900E681C2 /* SubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104722B92AD1897900E681C2 /* SubjectView.swift */; };
 		10C71CA22AD2ACFF009DD91D /* LessonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C71CA12AD2ACFF009DD91D /* LessonView.swift */; };
 		10C71CA42AD2AEAF009DD91D /* ImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C71CA32AD2AEAF009DD91D /* ImagesView.swift */; };
 		10C71CA62AD2AEBC009DD91D /* TranslatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C71CA52AD2AEBC009DD91D /* TranslatorView.swift */; };
@@ -28,7 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		104722B92AD1897900E681C2 /* InSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InSubjectView.swift; sourceTree = "<group>"; };
+		104722B92AD1897900E681C2 /* SubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectView.swift; sourceTree = "<group>"; };
 		10C71CA12AD2ACFF009DD91D /* LessonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonView.swift; sourceTree = "<group>"; };
 		10C71CA32AD2AEAF009DD91D /* ImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesView.swift; sourceTree = "<group>"; };
 		10C71CA52AD2AEBC009DD91D /* TranslatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslatorView.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 		1069256A2AE2F02F00499D22 /* SubjectsView */ = {
 			isa = PBXGroup;
 			children = (
-				104722B92AD1897900E681C2 /* InSubjectView.swift */,
+				104722B92AD1897900E681C2 /* SubjectView.swift */,
 			);
 			path = SubjectsView;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				104722BA2AD1897900E681C2 /* InSubjectView.swift in Sources */,
+				104722BA2AD1897900E681C2 /* SubjectView.swift in Sources */,
 				DD7123632ADC4A5D00156F00 /* TextToSpeech.swift in Sources */,
 				10C71CA42AD2AEAF009DD91D /* ImagesView.swift in Sources */,
 				10C9CB9E2AD0816A00895DBE /* AccountView.swift in Sources */,

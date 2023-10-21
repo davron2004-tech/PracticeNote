@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct InSubjectView: View {
+struct SubjectView: View {
     var subject: SubjectDataModel
     @State var isAddingLesson = false
     @State var lessonName = ""

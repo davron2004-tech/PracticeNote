@@ -19,7 +19,7 @@ struct LessonView: View {
                 CardsView(lesson:lesson)
                     .tabItem { Label("Vocabs", systemImage: "list.clipboard.fill") }
             }
-            .navigationTitle("Lesson Name")
+            .navigationTitle(lesson.lessonName)
         }
     }
 }

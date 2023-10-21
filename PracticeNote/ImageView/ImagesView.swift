@@ -32,9 +32,8 @@ struct ImagesView: View {
                     
                     
                     ForEach(lesson.images, id: \.self) { imageData in
-                        var image = UIImage(data: imageData)
-                        if let uiImage = image {
-                            ImageCellView(uiImage: uiImage)
+                        if let image = UIImage(data: imageData) {
+                            ImageCellView(uiImage: image)
                         }
                     }
                 }

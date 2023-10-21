@@ -9,18 +9,16 @@ import SwiftUI
 import SwiftData
 struct HomeView: View {
     @Environment(\.modelContext) var context
-    @Query var subjects:[SubjectDataModel]
-    @State var isAddSubjectViewShowing = false
-    @State var isShowingInSubjectView = false
+    var subjects:[SubjectDataModel]
+    @State var isAddSubjectView = false
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 ForEach(subjects) { subject in
-                    //                VStack(spacing: 24) {
-                    //                    SubjectView(subject: subject)
-                    //                }
+                    
                     NavigationLink {
-                        InSubjectView(subject: subject)
+                        SubjectView(subject: subject)
                     } label: {
                         HStack {
                             Text(subject.emoji)
@@ -48,13 +46,13 @@ struct HomeView: View {
             .navigationTitle("Subjects")
             .toolbar {
                 Button {
-                    isAddSubjectViewShowing = true
+                    isAddSubjectView = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
-            .sheet(isPresented: $isAddSubjectViewShowing) {
-                SubjectFormView(isShoiwngSubjectFormView: $isAddSubjectViewShowing)
+            .sheet(isPresented: $isAddSubjectView) {
+                SubjectFormView(isShoiwngSubjectFormView: $isAddSubjectView)
                     .presentationDetents([.medium])
                     .presentationDragIndicator(.visible)
             }
@@ -62,6 +60,4 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
-}
+

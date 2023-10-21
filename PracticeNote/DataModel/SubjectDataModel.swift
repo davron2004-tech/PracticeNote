@@ -39,6 +39,7 @@ class LessonDataModel: Identifiable {
     var lessonName:String
     var text:String?
     var cards:[CardDataModel] = []
+    var images: [Data] = []
     init(lessonName: String) {
         self.lessonName = lessonName
     }

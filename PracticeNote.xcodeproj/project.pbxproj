@@ -18,6 +18,7 @@
 		10E89FD62AD078E7008417D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E89FD52AD078E7008417D8 /* Assets.xcassets */; };
 		10E89FD92AD078E7008417D8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */; };
 		10E89FE42AD07D23008417D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E89FE32AD07D23008417D8 /* HomeView.swift */; };
+		DD1477A12AE3DCD20074F64F /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1477A02AE3DCD20074F64F /* CameraView.swift */; };
 		DD5531EF2AD1A07B004C1495 /* LessonFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */; };
 		DD7123632ADC4A5D00156F00 /* TextToSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7123622ADC4A5D00156F00 /* TextToSpeech.swift */; };
 		DD8E36A82AD170CA005EA93B /* SubjectFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */; };
@@ -40,6 +41,7 @@
 		10E89FD52AD078E7008417D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		10E89FE32AD07D23008417D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DD1477A02AE3DCD20074F64F /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		DD5531EE2AD1A07B004C1495 /* LessonFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonFormView.swift; sourceTree = "<group>"; };
 		DD7123622ADC4A5D00156F00 /* TextToSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeech.swift; sourceTree = "<group>"; };
 		DD8E36A72AD170CA005EA93B /* SubjectFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectFormView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				10C71CA32AD2AEAF009DD91D /* ImagesView.swift */,
+				DD1477A02AE3DCD20074F64F /* CameraView.swift */,
 			);
 			path = ImageView;
 			sourceTree = "<group>";
@@ -130,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				10E89FD12AD078E6008417D8 /* PracticeNoteApp.swift */,
+				1069256C2AE2F04C00499D22 /* DataModel */,
 				10E89FD32AD078E6008417D8 /* ContentView.swift */,
 				10E89FE32AD07D23008417D8 /* HomeView.swift */,
 				10C9CB9D2AD0816A00895DBE /* AccountView.swift */,
@@ -138,11 +142,9 @@
 				106925692AE2F02500499D22 /* FormsView */,
 				1069256E2AE2F06500499D22 /* ImageView */,
 				1069256D2AE2F05900499D22 /* CardView */,
-				1069256C2AE2F04C00499D22 /* DataModel */,
-				10C71CA72AD2AF93009DD91D /* NoteView.swift */,
-				10C71CA52AD2AEBC009DD91D /* TranslatorView.swift */,
-				DDFAE6C12AD8564F00B5DC84 /* Translator.swift */,
+				DD14779F2AE3DC350074F64F /* Translator */,
 				DD7123622ADC4A5D00156F00 /* TextToSpeech.swift */,
+				10C71CA72AD2AF93009DD91D /* NoteView.swift */,
 				10E89FD52AD078E7008417D8 /* Assets.xcassets */,
 				10E89FD72AD078E7008417D8 /* Preview Content */,
 			);
@@ -155,6 +157,15 @@
 				10E89FD82AD078E7008417D8 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DD14779F2AE3DC350074F64F /* Translator */ = {
+			isa = PBXGroup;
+			children = (
+				10C71CA52AD2AEBC009DD91D /* TranslatorView.swift */,
+				DDFAE6C12AD8564F00B5DC84 /* Translator.swift */,
+			);
+			path = Translator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +250,7 @@
 				10E89FD22AD078E6008417D8 /* PracticeNoteApp.swift in Sources */,
 				DDED54922AD904CB00073615 /* CardsView.swift in Sources */,
 				10C71CA62AD2AEBC009DD91D /* TranslatorView.swift in Sources */,
+				DD1477A12AE3DCD20074F64F /* CameraView.swift in Sources */,
 				10C71CA82AD2AF93009DD91D /* NoteView.swift in Sources */,
 				DD8E36A82AD170CA005EA93B /* SubjectFormView.swift in Sources */,
 				10C71CA22AD2ACFF009DD91D /* LessonView.swift in Sources */,
@@ -379,6 +391,7 @@
 				DEVELOPMENT_TEAM = 4RUKJ5BRNZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -408,6 +421,7 @@
 				DEVELOPMENT_TEAM = 4RUKJ5BRNZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -10,27 +10,26 @@ import SwiftUI
 struct ImagesView: View {
     @Bindable var lesson:LessonDataModel
     var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVGrid(columns: columns, alignment: .leading) {
-                    VStack {
-                        NavigationLink {
-                            EmptyView()
-                        } label: {
-                            VStack {
-                                Image(systemName: "camera")
-                                Text("Camera").font(.caption)
-                            }
-                            .frame(width: 150, height: 100)
-                            .background(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 25.0))
-                            .shadow(radius: 4, x: 0, y: 0)
-                            .padding()
-                        }
-                    }
-                    
-                    
+
+//                    NavigationLink {
+//                        CameraView(lesson: lesson)
+//                            .navigationBarBackButtonHidden(true)
+//                    } label: {
+//                        VStack {
+//                            Image(systemName: "camera")
+//                            Text("Camera").font(.caption)
+//                        }
+//                        .frame(width: 150, height: 100)
+//                        .background(.white)
+//                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
+//                        .shadow(radius: 4, x: 0, y: 0)
+//                        .padding()
+//                    }
                     ForEach(lesson.images, id: \.self) { imageData in
                         if let image = UIImage(data: imageData) {
                             ImageCellView(uiImage: image)
@@ -38,7 +37,17 @@ struct ImagesView: View {
                     }
                 }
             }
-        }.padding()
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink{
+                        CameraView(lesson: lesson)
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        Image(systemName: "camera")
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -51,6 +60,8 @@ struct ImageCellView: View {
                 .aspectRatio(contentMode: .fill)
         }
         .frame(width: 150, height: 100)
+        .padding(.trailing,20)
+        .padding(.leading,2)
     }
 }
 

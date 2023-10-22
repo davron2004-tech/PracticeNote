@@ -6,22 +6,23 @@
 //
 
 import SwiftUI
-
 struct ImagesView: View {
     @Bindable var lesson:LessonDataModel
+    @Environment(\.verticalSizeClass) var orientation
     var slicedImages:[[Data]]{
         let images = lesson.images
         var row:[Data] = []
         var table:[[Data]] = []
         var isFirstRow = true
+        let  numberOfRows = orientation == .regular ? 3 : 4
         for image in images{
-            if (row.count == 2 && isFirstRow){
+            if (row.count == numberOfRows - 1 && isFirstRow){
                 table.append(row)
                 row = []
                 row.append(image)
                 isFirstRow = false
             }
-            else if(row.count == 3){
+            else if(row.count == numberOfRows){
                 table.append(row)
                 row = []
                 row.append(image)
@@ -53,7 +54,7 @@ struct ImagesView: View {
                                         Image(systemName: "camera")
                                         Text("Camera").font(.caption)
                                     }
-                                    .frame(width: geo.size.width * 0.32, height: 100)
+                                    .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
                                     .background(.white)
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 16.0))
@@ -64,12 +65,17 @@ struct ImagesView: View {
                             
                             ForEach(imageRow , id:\.self){
                                 imageData in
+                                NavigationLink{
+                                    PhotoView(image: imageData,lesson: lesson)
+                                }label: {
+                                    Image(uiImage: UIImage(data: imageData)!)
+                                        .resizable()
+                                        .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
+                                    
+                                        .aspectRatio(contentMode: .fit)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                                }
                                 
-                                Image(uiImage: UIImage(data: imageData)!)
-                                    .resizable()
-                                    .frame(width: geo.size.width * 0.32 ,height: 100)
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16.0))
                             }
                         }
                         
@@ -99,8 +105,4 @@ struct ImageCellView: View {
         .padding(.leading,2)
     }
 }
-extension UIScreen{
-   static let screenWidth = UIScreen.main.bounds.size.width
-   static let screenHeight = UIScreen.main.bounds.size.height
-   static let screenSize = UIScreen.main.bounds.size
-}
+

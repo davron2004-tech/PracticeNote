@@ -8,11 +8,36 @@
 import SwiftUI
 
 struct PhotoView: View {
+    var image:Data
+    var lesson:LessonDataModel
+    @Environment(\.dismiss) var dismiss
+    @State var order = 0
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            Image(uiImage: UIImage(data: image)!)
+                .resizable()
+                .padding(.top,0)
+                .padding(.leading,0)
+                .padding(.trailing,0)
+                .padding(.bottom,0)
+                .aspectRatio(contentMode: .fit)
+        }
+        .toolbar{
+            ToolbarItem(placement: .topBarTrailing) {
+                Button{
+                    for imageIn in lesson.images{
+                        if imageIn == image{
+                            dismiss()
+                            lesson.images.remove(at: order)
+                        }
+                        order += 1
+                    }
+                }label: {
+                    Image(systemName: "trash")
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    PhotoView()
-}
+

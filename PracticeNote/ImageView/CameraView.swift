@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 struct CameraView: UIViewControllerRepresentable {
     var lesson:LessonDataModel
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.dismiss) var dismiss
     func makeCoordinator() -> Coordinator {
         return Coordinator(cameraView: self)
     }
@@ -36,8 +36,11 @@ class Coordinator:NSObject, UIImagePickerControllerDelegate,UINavigationControll
         }
         let imageToSave = image.jpeg(.low)
         cameraView.lesson.images.append(imageToSave!)
-        cameraView.presentation.wrappedValue.dismiss()
+        cameraView.dismiss()
         
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        cameraView.dismiss()
     }
 }
 extension UIImage {

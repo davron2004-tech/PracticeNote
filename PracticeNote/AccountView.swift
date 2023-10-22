@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 struct AccountView: View {
     @State var isSheetShowingVocab = false
-    var subjects:[SubjectDataModel]
+    @Query var subjects:[SubjectDataModel]
     @State var lessonCount = 0
     @State var wordCount = 0
     var body: some View {

@@ -9,53 +9,44 @@ import SwiftUI
 import SwiftData
 struct HomeView: View {
     @Environment(\.modelContext) var context
-    var subjects:[SubjectDataModel]
-    @State var isAddSubjectView = false
-    
+    @Query var subjects:[SubjectDataModel]
     var body: some View {
         NavigationStack {
-            ScrollView {
+            List{
                 ForEach(subjects) { subject in
-                    
-                    NavigationLink {
-                        SubjectView(subject: subject)
-                    } label: {
-                        HStack {
-                            Text(subject.emoji)
-                                .font(.title2)
-                            Text(subject.subjectName)
-                                .font(.title2)
-                            Spacer()
-                            NavigationLink {
-                                
-                            } label: {
-                                Image(systemName: "camera")
+                    Section("") {
+                        ZStack{
+                            NavigationLink{
+                                SubjectView(subject: subject)
+                            }label: {
+                                EmptyView()
                             }
-                            
+                            .opacity(0.0)
+                            HStack (){
+                                Text(subject.emoji)
+                                    .font(.title2)
+                                Text(subject.subjectName)
+                                    .font(.title2)
+                                Spacer()
+                            }
+                            .tint(Color.white)
+                            .frame(height: 50)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
-                        .tint(Color.white)
-                        .padding()
-                        .frame(height: 60)
-                        .background(.orange)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .padding()
+                        .listRowBackground(Color.orange)
                     }
                 }
+                .onDelete{ indexSet in
+                    indexSet.forEach { i in
+                        context.delete(subjects[i])
+                    }
+                }
+                .listRowSeparator(.hidden)
             }
+            .listSectionSpacing(0)
             .scrollContentBackground(.hidden)
             .navigationTitle("Subjects")
-            .toolbar {
-                Button {
-                    isAddSubjectView = true
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
-            .sheet(isPresented: $isAddSubjectView) {
-                SubjectFormView(isShoiwngSubjectFormView: $isAddSubjectView)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-            }
+            
         }
     }
 }

@@ -109,8 +109,8 @@
 		1069256E2AE2F06500499D22 /* ImageView */ = {
 			isa = PBXGroup;
 			children = (
-				10C71CA32AD2AEAF009DD91D /* ImagesView.swift */,
 				DD1477A02AE3DCD20074F64F /* CameraView.swift */,
+				10C71CA32AD2AEAF009DD91D /* ImagesView.swift */,
 				DDC4C9DA2AE4FACC00A80210 /* PhotoView.swift */,
 			);
 			path = ImageView;

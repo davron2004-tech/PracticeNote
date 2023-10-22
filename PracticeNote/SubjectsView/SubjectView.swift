@@ -21,6 +21,9 @@ struct SubjectView: View {
                         Text(lesson.lessonName)
                     }
                 }
+                .onDelete{ indexSet in
+                    subject.lessons.remove(atOffsets: indexSet)
+                }
             }
             .navigationTitle("\(subject.subjectName)")
             .toolbar {

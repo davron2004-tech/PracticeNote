@@ -9,41 +9,74 @@ import SwiftUI
 
 struct ImagesView: View {
     @Bindable var lesson:LessonDataModel
-    var columns = [GridItem(.flexible()),GridItem(.flexible()),GridItem(.flexible())]
-    
+    var slicedImages:[[Data]]{
+        let images = lesson.images
+        var row:[Data] = []
+        var table:[[Data]] = []
+        var isFirstRow = true
+        for image in images{
+            if (row.count == 2 && isFirstRow){
+                table.append(row)
+                row = []
+                row.append(image)
+                isFirstRow = false
+            }
+            else if(row.count == 3){
+                table.append(row)
+                row = []
+                row.append(image)
+            }
+            else{
+                row.append(image)
+            }
+        }
+        table.append(row)
+        row = []
+        return table
+    }
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns, alignment: .leading) {
-
-//                    NavigationLink {
-//                        CameraView(lesson: lesson)
-//                            .navigationBarBackButtonHidden(true)
-//                    } label: {
-//                        VStack {
-//                            Image(systemName: "camera")
-//                            Text("Camera").font(.caption)
-//                        }
-//                        .frame(width: 150, height: 100)
-//                        .background(.white)
-//                        .clipShape(RoundedRectangle(cornerRadius: 25.0))
-//                        .shadow(radius: 4, x: 0, y: 0)
-//                        .padding()
-//                    }
-                    ForEach(lesson.images, id: \.self) { imageData in
-                        if let image = UIImage(data: imageData) {
-                            ImageCellView(uiImage: image)
+                VStack(alignment: .leading){
+                    ForEach(slicedImages, id: \.self) { imageRow in
+                        HStack{
+                            if slicedImages[0] == imageRow{
+                                
+                                NavigationLink {
+                                    CameraView(lesson: lesson)
+                                        .navigationBarBackButtonHidden(true)
+                                } label: {
+                                    
+                                    VStack {
+                                        Image(systemName: "camera")
+                                        Text("Camera").font(.caption)
+                                    }
+                                    .frame(width: 150, height: 100)
+                                    .background(.white)
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                                    .shadow(radius: 4, x: 0, y: 0)
+                                    .padding(.bottom)
+                                    .padding(.top)
+                                }
+                                
+                                
+                            }
+                            
+                            ForEach(imageRow , id:\.self){
+                                imageData in
+                                Image(uiImage: UIImage(data: imageData)!)
+                                    .resizable()
+                                    .frame(width: 150, height: 100)
+                                    .aspectRatio(contentMode: .fit)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                                    .padding(.bottom)
+                                    .padding(.top)
+                                
+                                
+                            }
                         }
-                    }
-                }
-            }
-            .toolbar{
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink{
-                        CameraView(lesson: lesson)
-                            .navigationBarBackButtonHidden(true)
-                    } label: {
-                        Image(systemName: "camera")
+                        
                     }
                 }
             }

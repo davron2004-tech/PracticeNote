@@ -34,7 +34,7 @@ class Coordinator:NSObject, UIImagePickerControllerDelegate,UINavigationControll
         guard let image = info[.originalImage] as? UIImage else {
             return
         }
-        let imageToSave = image.jpeg(.medium)
+        let imageToSave = image.jpeg(.low)
         cameraView.lesson.images.append(imageToSave!)
         cameraView.presentation.wrappedValue.dismiss()
         

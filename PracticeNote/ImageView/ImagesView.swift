@@ -37,9 +37,11 @@ struct ImagesView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading){
+                GeometryReader{
+                    geo in
+                    VStack(alignment: .leading,spacing:7){
                     ForEach(slicedImages, id: \.self) { imageRow in
-                        HStack{
+                        HStack(spacing: 7){
                             if slicedImages[0] == imageRow{
                                 
                                 NavigationLink {
@@ -51,41 +53,34 @@ struct ImagesView: View {
                                         Image(systemName: "camera")
                                         Text("Camera").font(.caption)
                                     }
-//                                    .frame(minWidth: 100, maxWidth: 150)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 100)
+                                    .frame(width: geo.size.width * 0.32, height: 100)
                                     .background(.white)
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 16.0))
                                     .shadow(radius: 4, x: 0, y: 0)
-                                    .padding(.bottom)
-                                    .padding(.top)
+                                    
                                 }
-                                
-                                
                             }
                             
                             ForEach(imageRow , id:\.self){
                                 imageData in
+                                
                                 Image(uiImage: UIImage(data: imageData)!)
                                     .resizable()
-//                                    .frame(minWidth: 100, maxWidth: 150)
-                                    .frame(maxWidth: .infinity)
-                                    .frame(height: 100)
+                                    .frame(width: geo.size.width * 0.32 ,height: 100)
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 16.0))
-                                    .padding(.bottom)
-                                    .padding(.top)
-                                
-                                
                             }
                         }
                         
+                        
+                        
                     }
                 }
-                .padding()
-                .fixedSize(horizontal: true, vertical: false)
             }
+                
+            }
+            .padding(.horizontal)
         }
         
     }
@@ -104,4 +99,8 @@ struct ImageCellView: View {
         .padding(.leading,2)
     }
 }
-
+extension UIScreen{
+   static let screenWidth = UIScreen.main.bounds.size.width
+   static let screenHeight = UIScreen.main.bounds.size.height
+   static let screenSize = UIScreen.main.bounds.size
+}

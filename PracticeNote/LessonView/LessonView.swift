@@ -20,6 +20,7 @@ struct LessonView: View {
                     .tabItem { Label("Vocabs", systemImage: "list.clipboard.fill") }
             }
             .navigationTitle(lesson.lessonName)
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

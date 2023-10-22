@@ -51,7 +51,8 @@ struct ImagesView: View {
                                         Image(systemName: "camera")
                                         Text("Camera").font(.caption)
                                     }
-                                    .frame(width: 150, height: 100)
+                                    .frame(minWidth: 100, maxWidth: 150)
+                                    .frame(height: 100)
                                     .background(.white)
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 16.0))
@@ -67,7 +68,8 @@ struct ImagesView: View {
                                 imageData in
                                 Image(uiImage: UIImage(data: imageData)!)
                                     .resizable()
-                                    .frame(width: 150, height: 100)
+                                    .frame(minWidth: 100, maxWidth: 150)
+                                    .frame(height: 100)
                                     .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 16.0))
                                     .padding(.bottom)
@@ -79,9 +81,10 @@ struct ImagesView: View {
                         
                     }
                 }
+                .padding()
             }
         }
-        .padding()
+        
     }
 }
 

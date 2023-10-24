@@ -38,10 +38,10 @@ struct AccountView: View {
                     } header: {
                         Text("Stats")
                     }
+                    .listRowBackground(Color("ListRow"))
                 }
+                .scrollContentBackground(.hidden)
             }
-            
-            .navigationTitle("Davron")
         }
         .sheet(isPresented: $isSheetShowingVocab){
             VStack {

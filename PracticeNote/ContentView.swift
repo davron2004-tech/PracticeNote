@@ -33,6 +33,7 @@ struct ContentView: View {
                             isAddSubjectView = true
                         } label: {
                             Image(systemName: "plus")
+                                .foregroundStyle(Color("LabelColor"))
                         }
                     }
                 }

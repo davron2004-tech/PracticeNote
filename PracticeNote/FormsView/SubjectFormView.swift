@@ -16,16 +16,26 @@ struct SubjectFormView: View {
     @State var emoji: String = "🗿"
     var body: some View {
         NavigationStack {
-            Form {
-                TextField("Subject Name", text: $subjectName)
-                
-                Picker("Emoji", selection: $emoji) {
-                    ForEach(emojis,id: \.self) { emoji in
-                        Text(emoji)
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                Form {
+                    TextField("Subject Name", text: $subjectName)
+                        
+                        .listRowBackground(Color("ListRow"))
+                    Picker("Emoji", selection: $emoji) {
+                        ForEach(emojis,id: \.self) { emoji in
+                            Text(emoji)
+                        }
+                        
                     }
+                    .listRowBackground(Color("ListRow"))
+                    .listRowSeparator(.hidden)
                 }
                 
+                .scrollContentBackground(.hidden)
             }
+            
             .navigationTitle("Add New Subject")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

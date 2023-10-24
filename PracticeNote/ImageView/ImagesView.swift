@@ -37,56 +37,61 @@ struct ImagesView: View {
     }
     var body: some View {
         NavigationStack {
-            ScrollView {
-                GeometryReader{
-                    geo in
-                    VStack(alignment: .leading,spacing:7){
-                    ForEach(slicedImages, id: \.self) { imageRow in
-                        HStack(spacing: 7){
-                            if slicedImages[0] == imageRow{
-                                
-                                NavigationLink {
-                                    CameraView(lesson: lesson)
-                                        .navigationBarBackButtonHidden(true)
-                                } label: {
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                ScrollView {
+                    GeometryReader{
+                        geo in
+                        VStack(alignment: .leading,spacing:7){
+                        ForEach(slicedImages, id: \.self) { imageRow in
+                            HStack(spacing: 7){
+                                if slicedImages[0] == imageRow{
                                     
-                                    VStack {
-                                        Image(systemName: "camera")
-                                        Text("Camera").font(.caption)
+                                    NavigationLink {
+                                        CameraView(lesson: lesson)
+                                            .navigationBarBackButtonHidden(true)
+                                    } label: {
+                                        
+                                        VStack {
+                                            Image(systemName: "camera")
+                                            Text("Camera").font(.caption)
+                                        }
+                                        .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
+                                        .background(.white)
+                                        .aspectRatio(contentMode: .fit)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                                        .shadow(radius: 4, x: 0, y: 0)
+                                        
                                     }
-                                    .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
-                                    .background(.white)
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 16.0))
-                                    .shadow(radius: 4, x: 0, y: 0)
+                                }
+                                
+                                ForEach(imageRow , id:\.self){
+                                    imageData in
+                                    NavigationLink{
+                                        PhotoView(image: imageData,lesson: lesson)
+                                    }label: {
+                                        Image(uiImage: UIImage(data: imageData)!)
+                                            .resizable()
+                                            .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
+                                        
+                                            .aspectRatio(contentMode: .fit)
+                                            .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                                    }
                                     
                                 }
                             }
                             
-                            ForEach(imageRow , id:\.self){
-                                imageData in
-                                NavigationLink{
-                                    PhotoView(image: imageData,lesson: lesson)
-                                }label: {
-                                    Image(uiImage: UIImage(data: imageData)!)
-                                        .resizable()
-                                        .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
-                                    
-                                        .aspectRatio(contentMode: .fit)
-                                        .clipShape(RoundedRectangle(cornerRadius: 16.0))
-                                }
-                                
-                            }
+                            
+                            
                         }
-                        
-                        
-                        
                     }
                 }
+                    
+                }
+                .padding(.horizontal)
             }
-                
-            }
-            .padding(.horizontal)
+            
         }
         
     }

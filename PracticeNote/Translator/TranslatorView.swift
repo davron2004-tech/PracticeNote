@@ -20,25 +20,27 @@ struct TranslatorView: View {
         
         NavigationStack{
             ZStack{
-                Color(.gray)
+                Color("BackgroundColor")
                     .ignoresSafeArea()
                 VStack{
                     TranslatorSideView(text: $frontText, language: $frontLanguage)
                         .padding(.bottom)
                     TranslatorSideView(text: $backText, language: $backLanguage)
                         .padding(.bottom)
+
+                }
+                .padding()
+            }
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         let card = CardDataModel(face: frontText, back: backText, date: Date())
                         lesson.cards.append(card)
                         presentation.wrappedValue.dismiss()
                     } label: {
-                        Text("Save the card")
-                        
+                        Text("Save")
                     }
-                    .buttonStyle(.borderedProminent)
-
                 }
-                .padding()
             }
             .task(id: frontText) {
                 if (!frontText.isEmpty){
@@ -91,12 +93,12 @@ struct TranslatorSideView:View {
     @Binding var language:String
     @State var isShowingPopup = false
     var body: some View {
-        VStack{
+        
             HStack{
                 Button {
-//                    if (language == "Uzbek"){
-//                        isShowingPopup = true
-//                    }
+                    if (language == "Uzbek"){
+                        isShowingPopup = true
+                    }
                     
                         let textToSpeech = TextToSpeech(text: text)
                         textToSpeech.speak()
@@ -107,8 +109,8 @@ struct TranslatorSideView:View {
                 }
 
                 TextEditor(text: $text)
-                    .foregroundStyle(.white)
-                    .background(Color.white)
+                    .foregroundStyle(Color(.label))
+                    .scrollContentBackground(.hidden)
                 VStack {
                     Picker("Language", selection: $language) {
                         ForEach(languages,id: \.self){languageText in
@@ -118,13 +120,12 @@ struct TranslatorSideView:View {
                     Spacer()
                 }
             }
+            .background(Color("ListRow"))
+        .alert(isPresented: $isShowingPopup){
+            Alert(title: Text("Error occured"),
+                  message: Text("Speech is not available in Uzbek language!"),
+                  dismissButton: .default(Text("Ok")))
         }
-        .popover(isPresented: $isShowingPopup){
-            Text("Speech is only available in English and Russian and Korean!")
-                .foregroundStyle(.secondary)
-                .padding()
-        }
-        .background(Color(.white))
         .clipShape(RoundedRectangle(cornerRadius: 16))
             
             

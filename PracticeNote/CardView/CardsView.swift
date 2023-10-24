@@ -17,22 +17,28 @@ struct CardsView: View {
     }
     var body: some View {
         NavigationStack{
-            ScrollView(.horizontal) {
-                HStack(spacing: 10){
-                    ForEach(sortedCards,id:\.self){card in
-                        CardView(lesson: lesson, card:card)
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                VStack{
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 10){
+                            ForEach(sortedCards,id:\.self){card in
+                                CardView(lesson: lesson, card:card)
+                            }
+                        }
+                        .frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
                     }
+                    NavigationLink{
+                        TranslatorView(lesson: lesson)
+                    } label: {
+                        Text("Create New Card")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .padding(.bottom)
                 }
-                .frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
             }
-            VStack{
-                NavigationLink{
-                    TranslatorView(lesson: lesson)
-                } label: {
-                    Text("Create New Card")
-                }
-                .buttonStyle(.borderedProminent)
-            }
+            
         }
     }
 }

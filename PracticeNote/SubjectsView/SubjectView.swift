@@ -21,33 +21,39 @@ struct SubjectView: View {
     var body: some View {
         
         NavigationStack {
-            List {
-                ForEach(sortedLessons) { lesson in
-                    NavigationLink{
-                        LessonView(lesson: lesson)
-                    }label: {
-                        Text(lesson.lessonName)
-                    }
-                }
-                .onDelete{ indexSet in
-                    var order = 0
-                    for lesson in subject.lessons{
-                        if lesson == sortedLessons[indexSet.first!]{
-                            break
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                List {
+                    ForEach(sortedLessons) { lesson in
+                        NavigationLink{
+                            LessonView(lesson: lesson)
+                        }label: {
+                            Text(lesson.lessonName)
                         }
-                        else{
-                            order += 1
+                        .listRowBackground(Color("ListRow"))
+                    }
+                    .onDelete{ indexSet in
+                        var order = 0
+                        for lesson in subject.lessons{
+                            if lesson == sortedLessons[indexSet.first!]{
+                                break
+                            }
+                            else{
+                                order += 1
+                            }
                         }
-                    }
-                    subject.lessons.remove(at:order)
-                    do{
-                        try context.save()
-                    }
-                    catch{
+                        subject.lessons.remove(at:order)
+                        do{
+                            try context.save()
+                        }
+                        catch{
+                            
+                        }
                         
                     }
-                    
                 }
+                .scrollContentBackground(.hidden)
             }
             .navigationTitle("\(subject.subjectName)")
             .toolbar {
@@ -61,7 +67,8 @@ struct SubjectView: View {
                 LessonFormView(isShowingLessonForm: $isAddingLesson, subject: subject)
             }
             
-        }  
+        }
+        .tint(Color("LabelColor"))
     }
     
 }

@@ -12,12 +12,19 @@ struct LessonFormView: View {
     @Binding var isShowingLessonForm:Bool
     var subject:SubjectDataModel
     var body: some View {
-        NavigationView{
-            Form{
-                TextField("Lesson name", text: $lessonName)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
+        NavigationStack{
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                Form{
+                    TextField("Lesson name", text: $lessonName)
+                        .listRowBackground(Color("ListRow"))
+                        .presentationDetents([.medium])
+                        .presentationDragIndicator(.visible)
+                }
+                .scrollContentBackground(.hidden)
             }
+            
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button{

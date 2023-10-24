@@ -28,7 +28,7 @@ struct TranslatorView: View {
                     TranslatorSideView(text: $backText, language: $backLanguage)
                         .padding(.bottom)
                     Button {
-                        let card = CardDataModel(face: frontText, back: backText)
+                        let card = CardDataModel(face: frontText, back: backText, date: Date())
                         lesson.cards.append(card)
                         presentation.wrappedValue.dismiss()
                     } label: {
@@ -107,7 +107,8 @@ struct TranslatorSideView:View {
                 }
 
                 TextEditor(text: $text)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
+                    .background(Color.white)
                 VStack {
                     Picker("Language", selection: $language) {
                         ForEach(languages,id: \.self){languageText in
@@ -119,7 +120,7 @@ struct TranslatorSideView:View {
             }
         }
         .popover(isPresented: $isShowingPopup){
-            Text("Speech is only available in English and Russian!")
+            Text("Speech is only available in English and Russian and Korean!")
                 .foregroundStyle(.secondary)
                 .padding()
         }

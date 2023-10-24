@@ -10,13 +10,17 @@ struct CardsView: View {
     
     
     @Bindable var lesson:LessonDataModel
-    
+    var sortedCards:[CardDataModel]{
+        lesson.cards.sorted(by: { card1, card2 in
+            card1.date > card2.date
+        })
+    }
     var body: some View {
         NavigationStack{
             ScrollView(.horizontal) {
-                HStack{
-                    ForEach(lesson.cards,id:\.self){card in
-                        CardView(card:card)
+                HStack(spacing: 10){
+                    ForEach(sortedCards,id:\.self){card in
+                        CardView(lesson: lesson, card:card)
                     }
                 }
                 .frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)

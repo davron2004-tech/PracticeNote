@@ -38,7 +38,7 @@ struct SubjectFormView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button{
-                        context.insert(SubjectDataModel(subjectName: subjectName, emoji: emoji))
+                        context.insert(SubjectDataModel(subjectName: subjectName, emoji: emoji, date: Date()))
                         isShoiwngSubjectFormView = false
                     } label: {
                         Text("Save")

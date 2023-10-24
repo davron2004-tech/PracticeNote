@@ -11,36 +11,38 @@ import SwiftData
 
 @Model
 class SubjectDataModel:Identifiable{
-    var id = UUID()
-    var subjectName:String
+    @Attribute(.unique) var subjectName:String
     var emoji:String
     var words:[String] = []
-    var lessons:[LessonDataModel] = []
-    init(subjectName: String, emoji: String) {
+    var date:Date
+    @Relationship(deleteRule:.cascade) var lessons:[LessonDataModel] = []
+    init(subjectName: String, emoji: String,date:Date) {
         self.subjectName = subjectName
         self.emoji = emoji
+        self.date = date
     }
 }
-
 @Model
 class LessonDataModel: Identifiable {
-    var id = UUID()
     var lessonName:String
     var text:String?
-    var cards:[CardDataModel] = []
+    @Relationship(deleteRule:.cascade) var cards:[CardDataModel] = []
+    var date:Date
     var images: [Data] = []
-    init(lessonName: String) {
+    init(lessonName: String,date:Date) {
         self.lessonName = lessonName
+        self.date = date
     }
 }
 
 @Model
 class CardDataModel:Identifiable{
-    var id = UUID()
     var face:String
     var back:String
-    init(face: String, back: String) {
+    var date:Date
+    init(face: String, back: String,date:Date) {
         self.face = face
         self.back = back
+        self.date = date
     }
 }

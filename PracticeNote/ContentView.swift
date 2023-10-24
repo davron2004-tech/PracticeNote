@@ -7,6 +7,9 @@
 
 import SwiftUI
 struct ContentView: View {
+    init() {
+            UITabBar.appearance().backgroundColor = UIColor.lightGray
+    }
     enum SelectedView{
         case home
         case account
@@ -15,15 +18,14 @@ struct ContentView: View {
     @State var selectedView:SelectedView = .home
     var body: some View {
         NavigationStack{
-            TabView (selection:$selectedView){
-                HomeView()
-                    .tabItem { Label("Home", systemImage: "house") }
-                    .tag(SelectedView.home)
-                AccountView()
-                    .tabItem { Label("Account", systemImage: "person") }
-                    .tag(SelectedView.account)
-                
-            }
+                TabView (selection:$selectedView){
+                    HomeView()
+                        .tabItem { Label("Home", systemImage: "house") }
+                        .tag(SelectedView.home)
+                    AccountView()
+                        .tabItem { Label("Account", systemImage: "person") }
+                        .tag(SelectedView.account)
+            }    
             .toolbar{
                 if selectedView == .home{
                     ToolbarItem(placement: .topBarTrailing) {
@@ -36,8 +38,8 @@ struct ContentView: View {
                 }
                 
             }
-            .navigationTitle(selectedView == .home ? "Subjects" : "Account")
             
+            .navigationTitle(selectedView == .home ? "Subjects" : "Account")
         }
         .sheet(isPresented: $isAddSubjectView) {
             SubjectFormView(isShoiwngSubjectFormView: $isAddSubjectView)

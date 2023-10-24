@@ -100,8 +100,8 @@
 		1069256D2AE2F05900499D22 /* CardView */ = {
 			isa = PBXGroup;
 			children = (
-				DDED548F2AD902C100073615 /* CardView.swift */,
 				DDED54912AD904CB00073615 /* CardsView.swift */,
+				DDED548F2AD902C100073615 /* CardView.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -395,6 +395,7 @@
 				DEVELOPMENT_TEAM = 4RUKJ5BRNZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Practice Note";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -425,6 +426,7 @@
 				DEVELOPMENT_TEAM = 4RUKJ5BRNZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Practice Note";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need your camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

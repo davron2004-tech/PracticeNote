@@ -10,30 +10,77 @@ import SwiftData
 struct AccountView: View {
     @State var isSheetShowingVocab = false
     @Query var subjects:[SubjectDataModel]
-    @State var lessonCount = 0
+    @Query var lessons:[LessonDataModel]
     @State var wordCount = 0
+    @State var lessonCount = 0
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    HStack {
-                        Text("Subjects:").bold()
-                        Spacer()
-                        Text("\(subjects.count)")
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                List {
+                    Section {
+                        HStack {
+                            Text("Subjects:").bold()
+                            Spacer()
+                            Text("\(subjects.count)")
+                        }
+                        HStack {
+                            Text("Lessons:").bold()
+                            Spacer()
+                            Text("\(lessonCount)")
+                        }
+                        HStack {
+                            Text("Words:").bold()
+                            Spacer()
+                            Text("\(wordCount)")
+                        }
+                    } header: {
+                        Text("Stats")
                     }
-                    HStack {
-                        Text("Lessons:").bold()
-                        Spacer()
-                        Text("\(lessonCount)")
-                    }
-                    HStack {
-                        Text("Words:").bold()
-                        Spacer()
-                        Text("\(wordCount)")
-                    }
-                } header: {
-                    Text("Stats")
                 }
+            }
+            
+            .navigationTitle("Davron")
+        }
+        .sheet(isPresented: $isSheetShowingVocab){
+            VStack {
+                HStack {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "speaker.wave.2")
+                    }
+                    Text("아이")
+                    Spacer()
+                }
+                Divider()
+                HStack {
+                    Text("child")
+                    Spacer()
+                }
+                Spacer()
+            }
+            .font(.title2)
+            .bold()
+            .padding(.vertical, 32)
+            .padding(.horizontal, 24)
+            .presentationDetents([.fraction(0.3)])
+            .presentationDragIndicator(.visible)
+        }
+        .onAppear{
+            wordCount = 0
+            lessonCount = 0
+            for subject in subjects {
+                lessonCount += subject.lessons.count
+                for lesson in subject.lessons {
+                    wordCount += lesson.cards.count
+                }
+            }
+                
+        }
+    }
+}
 //                Section {
 //                    Button {
 //                        isSheetShowingVocab = true
@@ -73,47 +120,3 @@ struct AccountView: View {
 //                } header: {
 //                    Text("Practice History")
 //                }
-                
-            }
-            .navigationTitle("Davron")
-        }
-        .sheet(isPresented: $isSheetShowingVocab){
-            VStack {
-                HStack {
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "speaker.wave.2")
-                    }
-                    Text("아이")
-                    Spacer()
-                }
-                Divider()
-                HStack {
-                    Text("child")
-                    Spacer()
-                }
-                Spacer()
-            }
-            .font(.title2)
-            .bold()
-            .padding(.vertical, 32)
-            .padding(.horizontal, 24)
-            .presentationDetents([.fraction(0.3)])
-            .presentationDragIndicator(.visible)
-        }
-        .onAppear{
-            lessonCount = 0
-            wordCount = 0
-            for subject in subjects {
-                
-                lessonCount += subject.lessons.count
-                
-                for lesson in subject.lessons {
-                    wordCount += lesson.cards.count
-                }
-            }
-            
-        }
-    }
-}

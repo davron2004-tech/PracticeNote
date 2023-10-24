@@ -6,15 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SubjectView: View {
+    @Environment(\.modelContext) var context
     var subject: SubjectDataModel
+    var sortedLessons:[LessonDataModel]{
+        subject.lessons.sorted(by: {
+            $0.date > $1.date
+        })
+    }
     @State var isAddingLesson = false
     @State var lessonName = ""
     var body: some View {
+        
         NavigationStack {
             List {
-                ForEach(subject.lessons) { lesson in
+                ForEach(sortedLessons) { lesson in
                     NavigationLink{
                         LessonView(lesson: lesson)
                     }label: {
@@ -22,7 +30,23 @@ struct SubjectView: View {
                     }
                 }
                 .onDelete{ indexSet in
-                    subject.lessons.remove(atOffsets: indexSet)
+                    var order = 0
+                    for lesson in subject.lessons{
+                        if lesson == sortedLessons[indexSet.first!]{
+                            break
+                        }
+                        else{
+                            order += 1
+                        }
+                    }
+                    subject.lessons.remove(at:order)
+                    do{
+                        try context.save()
+                    }
+                    catch{
+                        
+                    }
+                    
                 }
             }
             .navigationTitle("\(subject.subjectName)")
@@ -34,10 +58,11 @@ struct SubjectView: View {
                 }
             }
             .sheet(isPresented: $isAddingLesson){
-                LessonFormView(isShowingLessonForm: $isAddingLesson,subject: subject)
+                LessonFormView(isShowingLessonForm: $isAddingLesson, subject: subject)
             }
-        }
-        
+            
+        }  
     }
+    
 }
 

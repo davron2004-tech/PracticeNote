@@ -20,7 +20,7 @@ struct PhotoView: View {
                 .padding(.leading,0)
                 .padding(.trailing,0)
                 .padding(.bottom,0)
-                .aspectRatio(contentMode: .fit)
+                .aspectRatio(contentMode: .fill)
         }
         .toolbar{
             ToolbarItem(placement: .topBarTrailing) {

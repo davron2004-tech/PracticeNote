@@ -43,10 +43,11 @@ struct TranslatorView: View {
                 }
             }
             .task(id: frontText) {
-                if (!frontText.isEmpty){
+                if (!frontText.isEmpty ){
                     @ObservedObject var translator = Translator(text: frontText, from: frontLanguage, to: backLanguage)
                     do{
                         try await translator.fetchData()
+                        
                         backText = translator.result!
                     }
                     catch{
@@ -99,11 +100,10 @@ struct TranslatorSideView:View {
                     if (language == "Uzbek"){
                         isShowingPopup = true
                     }
-                    
+                    else{
                         let textToSpeech = TextToSpeech(text: text)
                         textToSpeech.speak()
-                    
-                    
+                    }
                 } label: {
                     Image(systemName: "speaker.wave.2")
                 }
@@ -111,6 +111,7 @@ struct TranslatorSideView:View {
                 TextEditor(text: $text)
                     .foregroundStyle(Color(.label))
                     .scrollContentBackground(.hidden)
+                    
                 VStack {
                     Picker("Language", selection: $language) {
                         ForEach(languages,id: \.self){languageText in

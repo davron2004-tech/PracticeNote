@@ -14,13 +14,18 @@ struct PhotoView: View {
     @State var order = 0
     var body: some View {
         NavigationStack{
-            Image(uiImage: UIImage(data: image)!)
-                .resizable()
-                .padding(.top,0)
-                .padding(.leading,0)
-                .padding(.trailing,0)
-                .padding(.bottom,0)
-                .aspectRatio(contentMode: .fill)
+            ZStack{
+                Color("BackgroundColor")
+                    .ignoresSafeArea()
+                Image(uiImage: UIImage(data: image)!)
+                    .resizable()
+                    .padding(.top,0)
+                    .padding(.leading,0)
+                    .padding(.trailing,0)
+                    .padding(.bottom,0)
+                    .aspectRatio(contentMode: .fill)
+            }
+            
         }
         .toolbar{
             ToolbarItem(placement: .topBarTrailing) {

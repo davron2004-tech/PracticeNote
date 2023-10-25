@@ -42,6 +42,16 @@ struct LessonView: View {
                     }
                 }
             }
+            else if (selectedView == .cards){
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink{
+                        TranslatorView(lesson:lesson)
+                    }label: {
+                        Image(systemName: "plus")
+                            .foregroundStyle(Color(.label))
+                    }
+                }
+            }
         }
         .onAppear{
             if (lesson.text != nil){

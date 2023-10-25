@@ -29,13 +29,6 @@ struct CardsView: View {
                         }
                         .frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
                     }
-                    NavigationLink{
-                        TranslatorView(lesson: lesson)
-                    } label: {
-                        Text("Create New Card")
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .padding(.bottom)
                 }
             }
             

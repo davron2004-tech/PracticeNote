@@ -12,7 +12,6 @@ struct NoteView: View {
     @Bindable var lesson:LessonDataModel
     var body: some View {
         NavigationStack {
-            
             TextEditor(text: $temporaryText)
                 .padding()
                 .scrollContentBackground(.hidden)

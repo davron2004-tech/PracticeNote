@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
-
+enum CurrentView:String{
+    case notes = "notes"
+    case images = "images"
+    case cards = "cards"
+}
 struct LessonView: View {
-    enum CurrentView{
-        case notes
-        case images
-        case cards
-    }
+    
     @Bindable var lesson:LessonDataModel
-    @State var temporaryText:String = ""
-    @State var selectedView:CurrentView = .notes
+    @State private var temporaryText:String = ""
+            
+    @State  var selectedView:CurrentView = .notes
+    
     var body: some View {
         NavigationStack {
             TabView (selection:$selectedView){

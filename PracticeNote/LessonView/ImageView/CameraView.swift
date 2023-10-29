@@ -8,8 +8,8 @@
 import SwiftUI
 import UIKit
 struct CameraView: UIViewControllerRepresentable {
-    var lesson:LessonDataModel
     @Environment(\.dismiss) var dismiss
+    var lesson:LessonDataModel
     func makeCoordinator() -> Coordinator {
         return Coordinator(cameraView: self)
     }

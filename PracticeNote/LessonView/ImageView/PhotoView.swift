@@ -12,19 +12,22 @@ struct PhotoView: View {
     var lesson:LessonDataModel
     @Environment(\.dismiss) var dismiss
     @State var order = 0
+    @GestureState private var zoom = 1.0
     var body: some View {
+        
         NavigationStack{
-            ZStack{
-                Color("BackgroundColor")
-                    .ignoresSafeArea()
-                Image(uiImage: UIImage(data: image)!)
-                    .resizable()
-                    .padding(.top,0)
-                    .padding(.leading,0)
-                    .padding(.trailing,0)
-                    .padding(.bottom,0)
-                    .aspectRatio(contentMode: .fill)
+            GeometryReader{geo in
+                ZStack{
+                    Color("BackgroundColor")
+                        .ignoresSafeArea()
+                    Image(uiImage: UIImage(data: image)!)
+                        .resizable()
+                        .padding(0)
+                        .aspectRatio(contentMode: .fill)
+                        .modifier(ImageModifier(contentSize: CGSize(width: geo.size.width, height: geo.size.height)))
+                }
             }
+            
             
         }
         .toolbar{

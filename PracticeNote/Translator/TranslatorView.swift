@@ -11,10 +11,10 @@ struct TranslatorView: View {
     @Environment(\.presentationMode) var presentation
     @Bindable var lesson:LessonDataModel
     
-    @State var frontText = ""
-    @State var backText = ""
-    @State var frontLanguage = "English"
-    @State var backLanguage = "Russian"
+    @State private var frontText = ""
+    @State private var backText = ""
+    @State private var frontLanguage = "English"
+    @State private var backLanguage = "Russian"
     
     var body: some View {
         
@@ -47,7 +47,6 @@ struct TranslatorView: View {
                     @ObservedObject var translator = Translator(text: frontText, from: frontLanguage, to: backLanguage)
                     do{
                         try await translator.fetchData()
-                        
                         backText = translator.result!
                     }
                     catch{
@@ -92,7 +91,7 @@ struct TranslatorView: View {
 struct TranslatorSideView:View {
     @Binding var text:String
     @Binding var language:String
-    @State var isShowingPopup = false
+    @State private var isShowingPopup = false
     var body: some View {
         
             HStack{

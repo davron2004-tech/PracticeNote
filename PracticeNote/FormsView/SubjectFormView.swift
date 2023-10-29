@@ -7,13 +7,12 @@
 
 import SwiftUI
 import SwiftData
-let emojis = ["🗿","🍎","🔥"]
-
 struct SubjectFormView: View {
+    private let emojis = ["🗿","🍎","🔥"]
     @Environment(\.modelContext) var context
     @Binding var isShoiwngSubjectFormView:Bool
-    @State var subjectName: String = ""
-    @State var emoji: String = "🗿"
+    @State private var subjectName: String = ""
+    @State private var emoji: String = "🗿"
     var body: some View {
         NavigationStack {
             ZStack{
@@ -21,7 +20,6 @@ struct SubjectFormView: View {
                     .ignoresSafeArea()
                 Form {
                     TextField("Subject Name", text: $subjectName)
-                        
                         .listRowBackground(Color("ListRow"))
                     Picker("Emoji", selection: $emoji) {
                         ForEach(emojis,id: \.self) { emoji in

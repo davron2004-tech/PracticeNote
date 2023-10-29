@@ -8,14 +8,14 @@
 import SwiftUI
 struct ContentView: View {
     init() {
-            UITabBar.appearance().backgroundColor = UIColor.lightGray
+            UITabBar.appearance().backgroundColor = UIColor(named: "ListRow")
     }
-    enum SelectedView{
+    private enum SelectedView{
         case home
         case account
     }
-    @State var isAddSubjectView = false
-    @State var selectedView:SelectedView = .home
+    @State private var isAddSubjectView = false
+    @State private var selectedView:SelectedView = .home
     var body: some View {
         NavigationStack{
                 TabView (selection:$selectedView){
@@ -47,6 +47,7 @@ struct ContentView: View {
                 .presentationDetents([.medium])
                 .presentationDragIndicator(.visible)
         }
+        .tint(Color(.label))
     }
 }
 #Preview {

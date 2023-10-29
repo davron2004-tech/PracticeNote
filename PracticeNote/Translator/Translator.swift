@@ -16,42 +16,8 @@ class Translator:ObservableObject{
         self.from = from
         self.to = to
     }
-    var fromCode:String{
-        if(from == "English"){
-            return "en"
-        }
-        else if(from == "Russian"){
-            return "ru"
-        }
-        else if(from == "Uzbek"){
-            return "uz"
-        }
-        else if(from == "Korean"){
-            return "ko"
-        }
-        else{
-            return "en"
-        }
-    }
-    var toCode:String{
-        if(to == "English"){
-            return "en"
-        }
-        else if(to == "Russian"){
-            return "ru"
-        }
-        else if(to == "Uzbek"){
-            return "uz"
-        }
-        else if(to == "Korean"){
-            return "ko"
-        }
-        else{
-            return "en"
-        }
-    }
     func fetchData()async throws{
-        guard let url = URL(string: "https://api.mymemory.translated.net/get?q=\(text)&langpair=\(fromCode)|\(toCode)")
+        guard let url = URL(string: "https://api.mymemory.translated.net/get?q=\(text)&langpair=\(from.decode())|\(to.decode())")
         else {
             return
         }
@@ -65,6 +31,25 @@ class Translator:ObservableObject{
         result = fetchedData.responseData.translatedText
             
         
+    }
+}
+extension String{
+    func decode()->String{
+        if(self == "English"){
+            return "en"
+        }
+        else if(self == "Russian"){
+            return "ru"
+        }
+        else if(self == "Uzbek"){
+            return "uz"
+        }
+        else if(self == "Korean"){
+            return "ko"
+        }
+        else{
+            return "en"
+        }
     }
 }
 struct ResponseData:Codable{

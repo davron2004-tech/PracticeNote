@@ -55,13 +55,16 @@ struct ImagesView: View {
                                         
                                         VStack {
                                             Image(systemName: "camera")
+                                                .tint(Color.white)
                                             Text("Camera").font(.caption)
+                                                .tint(Color(.label))
                                         }
                                         .frame(width: orientation == .regular ? geo.size.width * 0.32 : geo.size.width * 0.24, height: 100)
-                                        .background(.white)
+                                        .background(Color("ListRow"))
                                         .aspectRatio(contentMode: .fit)
                                         .clipShape(RoundedRectangle(cornerRadius: 16.0))
                                         .shadow(radius: 4, x: 0, y: 0)
+                                        
                                         
                                     }
                                 }
@@ -77,6 +80,7 @@ struct ImagesView: View {
                                         
                                             .aspectRatio(contentMode: .fit)
                                             .clipShape(RoundedRectangle(cornerRadius: 16.0))
+                                            .shadow(radius: 4, x: 0, y: 0)
                                     }
                                     
                                 }
@@ -86,6 +90,7 @@ struct ImagesView: View {
                             
                         }
                     }
+                        .padding(.top)
                 }
                     
                 }

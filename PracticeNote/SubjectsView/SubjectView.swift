@@ -7,53 +7,69 @@
 
 import SwiftUI
 import SwiftData
-
 struct SubjectView: View {
     @Environment(\.modelContext) var context
     var subject: SubjectDataModel
-    var sortedLessons:[LessonDataModel]{
+    private var sortedLessons:[LessonDataModel]{
         subject.lessons.sorted(by: {
             $0.date > $1.date
         })
     }
-    @State var isAddingLesson = false
-    @State var lessonName = ""
+    @State private var isAddingLesson = false
     var body: some View {
         
         NavigationStack {
             ZStack{
                 Color("BackgroundColor")
                     .ignoresSafeArea()
-                List {
-                    ForEach(sortedLessons) { lesson in
-                        NavigationLink{
-                            LessonView(lesson: lesson)
-                        }label: {
-                            Text(lesson.lessonName)
-                        }
-                        .listRowBackground(Color("ListRow"))
-                    }
-                    .onDelete{ indexSet in
-                        var order = 0
-                        for lesson in subject.lessons{
-                            if lesson == sortedLessons[indexSet.first!]{
-                                break
-                            }
-                            else{
-                                order += 1
-                            }
-                        }
-                        subject.lessons.remove(at:order)
-                        do{
-                            try context.save()
-                        }
-                        catch{
-                            
+                if(sortedLessons.count == 0){
+                    VStack{
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            Text("No lessons")
+                                .foregroundStyle(.secondary)
+                                .font(.system(size:25))
+                                .multilineTextAlignment(.center)
+                            Spacer()
                         }
                         
+                        Spacer()
                     }
                 }
-                .scrollContentBackground(.hidden)
+                else{
+                    List {
+                        ForEach(sortedLessons) { lesson in
+                            NavigationLink{
+                                LessonView(lesson: lesson)
+                            }label: {
+                                Text(lesson.lessonName)
+                            }
+                            .listRowBackground(Color("ListRow"))
+                        }
+                        .onDelete{ indexSet in
+                            var order = 0
+                            for lesson in subject.lessons{
+                                if lesson == sortedLessons[indexSet.first!]{
+                                    break
+                                }
+                                else{
+                                    order += 1
+                                }
+                            }
+                            subject.lessons.remove(at:order)
+                            do{
+                                try context.save()
+                            }
+                            catch{
+                                
+                            }
+                            
+                        }
+                    }
+                    .scrollContentBackground(.hidden)
+                }
+                
             }
             .navigationTitle("\(subject.subjectName)")
             .toolbar {
@@ -65,6 +81,8 @@ struct SubjectView: View {
             }
             .sheet(isPresented: $isAddingLesson){
                 LessonFormView(isShowingLessonForm: $isAddingLesson, subject: subject)
+                    .presentationDetents([.medium])
+                    .presentationDragIndicator(.visible)
             }
             
         }

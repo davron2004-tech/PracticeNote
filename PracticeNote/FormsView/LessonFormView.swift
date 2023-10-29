@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LessonFormView: View {
-    @State var lessonName = ""
+    @State private var lessonName = ""
     @Binding var isShowingLessonForm:Bool
     var subject:SubjectDataModel
     var body: some View {
